@@ -1,0 +1,835 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link rel="stylesheet" href="css/reveal.css">
+	<link rel="stylesheet" href="css/theme/league.css">
+	<title>What's behind the pixels?</title>
+</head>
+<body>
+	<div class="reveal">
+		<div class="slides">
+			<section>
+				<section data-background-color="#000"
+					data-background-video="media/6502-simulation.mp4"
+					data-background-video-loop
+					data-background-video-muted="true"
+					data-background-size="contain">
+					<aside class="notes" data-markdown>
+- how does the pc work?
+- silly q
+- get it to do create jiras
+- clicking, double-clicking, CPU, RAM
+- bix boxes and arrrows milions directions
+- like this:
+					</aside>
+				</section>
+
+				<section data-background-color="#fff"
+					data-background-image="media/intro-diagram.png"
+					data-background-size="contain">
+				</section>
+				<section data-background-color="#fff"
+					data-background-image="media/intro-diagram-2.png"
+					data-background-size="contain">
+					<aside class="notes" data-markdown>
+- *cpu loads..*
+- good stuff, but it leaves you wanting more
+- what is an instruction?
+- and how does the CPU knows what it means and how to execute it
+- how does it even know it's supposed to load an instruction
+					</aside>
+				</section>
+				<section data-background-color="#fff">
+					<img src="media/memory-cpu.png" style="height: 40vh;" />
+				</section>
+				<section data-background-color="#fff">
+					<img src="media/memory-zoom.png" style="height:45vh;" />
+					<aside class="notes" data-markdown>
+- it's full of these strange blocks..
+- what are they? let's find out?
+- before we can see how the memory works, we have to first understand logic gates
+					</aside>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h2 class="fragment">The plan is…</h2>
+					<ul>
+						<li class="fragment">light switch</li>
+						<li class="fragment">logic gates</li>
+						<li class="fragment">flip-flops</li>
+						<li style="visibility: hidden;">RAM</li>
+					</ul>
+				</section>
+
+				<section data-background-color="#fff"
+					data-background-image="media/flip-flops.png"
+					data-background-size="contain">
+				</section>
+
+				<section>
+					<h2>The plan is…</h2>
+					<ul>
+						<li>light switch</li>
+						<li>logic gates</li>
+						<li>flip-flops</li>
+						<li class="fragment">RAM</li>
+					</ul>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h2>The plan</h2>
+					<ul>
+						<li><strong>light switch 👈</strong></li>
+						<li>logic gates</li>
+						<li>flip-flops</li>
+						<li>RAM</li>
+					</ul>
+					<aside class="notes" data-markdown>
+what is a logic gate?
+
+Eletronic circuit that acts as a gate.
+- it has to do with the boolean logic
+					</aside>
+				</section>
+
+				<section>
+					<img src="media/bulb-real.jpg" />
+				</section>
+
+				<section data-background-color="#000"
+					data-background-image="media/bulb-1.png"
+					data-background-size="contain">
+				</section>
+
+				<section data-background-color="#000"
+					data-background-video="media/bulb-2.mp4"
+					data-background-video-loop
+					data-background-size="contain">
+				</section>
+
+				<section data-background-color="#000"
+					data-background-image="media/bulb-3.png"
+					data-background-size="contain">
+				</section>
+
+				<section data-background-color="#000"
+					data-background-video="media/bulb-4.mov"
+					data-background-video-loop
+					data-background-size="contain">
+				</section>
+			</section>
+			<section>
+				<section>
+					<h2>The plan</h2>
+					<ul>
+						<li>light switch</li>
+						<li><strong>logic gates 👈</strong></li>
+						<li>flip-flops</li>
+						<li>RAM</li>
+					</ul>
+					<aside class="notes" data-markdown>
+what is a logic gate?
+
+Eletronic circuit that acts as a gate.
+- it has to do with the boolean logic
+					</aside>
+				</section>
+
+				<section data-background-color="#000"
+					data-background-image="media/series-switches-1.png"
+					data-background-size="contain">
+				</section>
+
+				<section data-background-color="#000"
+					data-background-image="media/series-switches-2.png"
+					data-background-size="contain">
+				</section>
+
+				<section data-background-color="#000"
+					data-background-image="media/series-switches-3.png"
+					data-background-size="contain">
+				</section>
+
+
+				<section data-background-color="#000"
+					data-background-video="media/series-switches-4.mov"
+					data-background-video-loop
+					data-background-size="contain">
+				</section>
+
+				<section data-background-color="#000"
+					data-background-image="media/series-sw-0-0.png"
+					data-background-size="contain">
+				</section>
+
+				<section data-background-color="#000"
+					data-background-image="media/series-sw-1-0.png"
+					data-background-size="contain">
+				</section>
+
+				<section data-background-color="#000"
+					data-background-image="media/series-sw-0-1.png"
+					data-background-size="contain">
+				</section>
+
+				<section data-background-color="#000"
+					data-background-video="media/series-sw-1-1.mov"
+					data-background-video-loop
+					data-background-size="contain">
+				</section>
+
+				<section data-background-color="#000"
+					data-background-image="media/series-sw-and-gate.png"
+					data-background-size="contain">
+				</section>
+
+				<section data-background-color="#000"
+					data-background-image="media/and-gate.png"
+					data-background-size="contain">
+					<h3 style="height: 50vh;">AND gate</h3>
+				</section>
+
+				<section data-background-color="#000"
+					data-background-image="media/and-gate-0-0.png"
+					data-background-size="contain">
+				</section>
+
+				<section data-background-color="#000"
+					data-background-image="media/and-gate-0-0-with-v.png"
+					data-background-size="contain">
+				</section>
+
+				<section data-background-color="#000"
+					data-background-image="media/and-gate-0-0.png"
+					data-background-size="contain">
+				</section>
+
+				<section data-background-color="#000"
+					data-background-image="media/and-gate-1-0.png"
+					data-background-size="contain">
+				</section>
+
+				<section data-background-color="#000"
+					data-background-image="media/and-gate-0-1.png"
+					data-background-size="contain">
+				</section>
+
+				<section data-background-color="#000"
+					data-background-video="media/and-gate-1-1.mov"
+					data-background-video-loop
+					data-background-size="contain">
+				</section>
+
+				<section data-background-color="#000"
+					data-background-image="media/and-0-0-0.png"
+					data-background-size="contain">
+					<h3 style="height: 50vh;">AND gate</h3>
+				</section>
+				<section data-background-color="#000"
+					data-background-image="media/and-1-0-0.png"
+					data-background-size="contain">
+					<h3 style="height: 50vh;">AND gate</h3>
+				</section>
+				<section data-background-color="#000"
+					data-background-image="media/and-0-1-0.png"
+					data-background-size="contain">
+					<h3 style="height: 50vh;">AND gate</h3>
+				</section>
+				<section data-background-color="#000"
+					data-background-image="media/and-1-1-1.png"
+					data-background-size="contain">
+					<h3 style="height: 50vh;">AND gate</h3>
+				</section>
+
+				<section>
+					<h3>AND gate</h3>
+					<table class="centered">
+						<tr> <th>A</th> <th>B</th> <th>OUT</th> </tr>
+						<tr> <td>0</td> <td>0</td> <td>0</td> </tr>
+						<tr> <td>1</td> <td>0</td> <td>0</td> </tr>
+						<tr> <td>0</td> <td>1</td> <td>0</td> </tr>
+						<tr> <td>1</td> <td>1</td> <td>1</td> </tr>
+					</table>
+				</section>
+				<section>
+					<h3>AND gate</h3>
+					<table class="centered">
+						<tr> <th>A</th> <th>B</th> <th>OUT</th> </tr>
+						<tr> <td>0</td> <td>0</td> <td>0</td> </tr>
+						<tr> <td>1</td> <td>0</td> <td>0</td> </tr>
+						<tr> <td>0</td> <td>1</td> <td>0</td> </tr>
+						<tr class="highlighted"> <td>1</td> <td>1</td> <td>1</td> </tr>
+					</table>
+				</section>
+
+				<section>
+					<p>Our first building block</p>
+					<p style="font-size: 3em;">🎉</p>
+				</section>
+
+				<section data-background-color="#000"
+					data-background-image="media/parallel-switches.png"
+					data-background-size="contain">
+				</section>
+
+				<section data-background-color="#000"
+					data-background-video="media/parallel-switches-1.mov"
+					data-background-video-loop
+					data-background-size="contain">
+				</section>
+
+				<section data-background-color="#000"
+					data-background-video="media/parallel-switches-2.mov"
+					data-background-video-loop
+					data-background-size="contain">
+				</section>
+
+				<section data-background-color="#000"
+					data-background-image="media/or.png"
+					data-background-size="contain">
+					<h3 style="height: 50vh;">OR gate</h3>
+				</section>
+				<section data-background-color="#000"
+					data-background-image="media/or-0-0-0.png"
+					data-background-size="contain">
+					<h3 style="height: 50vh;">OR gate</h3>
+				</section>
+				<section data-background-color="#000"
+					data-background-image="media/or-1-0-1.png"
+					data-background-size="contain">
+					<h3 style="height: 50vh;">OR gate</h3>
+				</section>
+				<section data-background-color="#000"
+					data-background-image="media/or-0-1-1.png"
+					data-background-size="contain">
+					<h3 style="height: 50vh;">OR gate</h3>
+				</section>
+				<section data-background-color="#000"
+					data-background-image="media/or-1-1-1.png"
+					data-background-size="contain">
+					<h3 style="height: 50vh;">OR gate</h3>
+				</section>
+				<section>
+					<h3>OR gate</h3>
+					<table>
+						<tr> <th>A</th> <th>B</th> <th>Out</th> </tr>
+						<tr class="highlighted"> <td>0</td> <td>0</td> <td>0</td> </tr>
+						<tr> <td>1</td> <td>0</td> <td>1</td> </tr>
+						<tr> <td>0</td> <td>1</td> <td>1</td> </tr>
+						<tr> <td>1</td> <td>1</td> <td>1</td> </tr>
+					</table>
+				</section>
+
+				<section data-background-color="#000"
+					data-background-video="media/not-1.mp4"
+					data-background-video-loop
+					data-background-size="contain">
+				</section>
+				<section data-background-color="#000"
+					data-background-video="media/not-2.mp4"
+					data-background-video-loop
+					data-background-size="contain">
+				</section>
+
+				<section data-background-color="#000"
+					data-background-image="media/not-gate.png"
+					data-background-size="contain">
+					<div style="height: 50vh;">
+						<h3>NOT gate</h3>
+						<p>(inverter)</p>
+					</div>
+				</section>
+				<section>
+					<h3>NOT gate</h3>
+					<table>
+						<tr> <th>IN</th> <th>Out</th> </tr>
+						<tr> <td>0</td> <td>1</td> </tr>
+						<tr> <td>1</td> <td>0</td> </tr>
+					</table>
+				</section>
+
+				<section data-background-color="#000"
+					data-background-image="media/nor.png"
+					data-background-size="contain">
+					<h3 style="height: 50vh;">NOR gate</h3>
+				</section>
+				<section data-background-color="#000"
+					data-background-image="media/nor-gate.png"
+					data-background-size="contain">
+					<h3 style="height: 50vh;">NOR gate</h3>
+				</section>
+				<section>
+					<h3>NOR gate</h3>
+					<table>
+						<tr> <th>A</th> <th>B</th> <th>Out</th> </tr>
+						<tr class="highlighted"> <td>0</td> <td>0</td> <td>1</td> </tr>
+						<tr> <td>1</td> <td>0</td> <td>0</td> </tr>
+						<tr> <td>0</td> <td>1</td> <td>0</td> </tr>
+						<tr> <td>1</td> <td>1</td> <td>0</td> </tr>
+					</table>
+				</section>
+
+				<section>
+					<h3>OR gate</h3>
+					<table>
+						<tr> <th>A</th> <th>B</th> <th>Out</th> </tr>
+						<tr class="highlighted"> <td>0</td> <td>0</td> <td>0</td> </tr>
+						<tr> <td>1</td> <td>0</td> <td>1</td> </tr>
+						<tr> <td>0</td> <td>1</td> <td>1</td> </tr>
+						<tr> <td>1</td> <td>1</td> <td>1</td> </tr>
+					</table>
+				</section>
+
+				<section>
+					<h3>NOR gate</h3>
+					<table>
+						<tr> <th>A</th> <th>B</th> <th>Out</th> </tr>
+						<tr class="highlighted"> <td>0</td> <td>0</td> <td>1</td> </tr>
+						<tr> <td>1</td> <td>0</td> <td>0</td> </tr>
+						<tr> <td>0</td> <td>1</td> <td>0</td> </tr>
+						<tr> <td>1</td> <td>1</td> <td>0</td> </tr>
+					</table>
+				</section>
+
+			</section>
+
+			<section>
+				<section>
+					<h2>The plan</h2>
+					<ul>
+						<li>light switch</li>
+						<li>logic gates</li>
+						<li><strong>flip-flops 👈</strong></li>
+						<li>RAM</li>
+					</ul>
+				</section>
+
+				<section data-background-color="#000"
+					data-background-image="media/flip-flop-1.png"
+					data-background-transition="none"
+					data-background-size="contain">
+					<aside class="notes">cross coupled NOR gates</aside>
+				</section>
+
+				<section data-background-color="#000"
+					data-background-video="media/flip-flop-set.mov"
+					data-background-video-loop
+					data-background-transition="none"
+					data-background-size="contain">
+				</section>
+
+				<section data-background-color="#000"
+					data-background-video="media/flip-flop-unset.mov"
+					data-background-video-loop
+					data-background-transition="none"
+					data-background-size="contain">
+				</section>
+
+				<section data-background-color="#000"
+					data-background-image="media/flip-flop-reset.png"
+					data-background-transition="none"
+					data-background-size="contain">
+				</section>
+
+				<section data-background-color="#000"
+					data-background-image="media/flip-flop-1.png"
+					data-background-transition="none"
+					data-background-size="contain">
+				</section>
+
+				<section data-background-color="#000"
+					data-background-image="media/flip-flop-1-labeled.png"
+					data-background-transition="none"
+					data-background-size="contain">
+				</section>
+
+				<section data-background-color="#000"
+					data-background-image="media/flip-flop-s-1.png"
+					data-background-transition="none"
+					data-background-size="contain">
+					<h3 style="height:50vh;">Flip-flop</h3>
+					<aside class="notes">2 stable states</aside>
+				</section>
+				<section data-background-color="#000"
+					data-background-image="media/flip-flop-s-2.png"
+					data-background-transition="none"
+					data-background-size="contain">
+					<h3 style="height:50vh;">Flip-flop</h3>
+				</section>
+				<section data-background-color="#000"
+					data-background-image="media/flip-flop-s-3.png"
+					data-background-transition="none"
+					data-background-size="contain">
+					<h3 style="height:50vh;">Flip-flop</h3>
+				</section>
+				<section data-background-color="#000"
+					data-background-image="media/flip-flop-s-4.png"
+					data-background-transition="none"
+					data-background-size="contain">
+					<h3 style="height:50vh;">Flip-flop</h3>
+				</section>
+				<section data-background-color="#000"
+					data-background-image="media/flip-flop-s-5.png"
+					data-background-transition="none"
+					data-background-size="contain">
+					<h3 style="height:50vh;">Flip-flop</h3>
+					<aside class="notes">its output depends on sequence of past states</aside>
+				</section>
+
+				<section>
+					<h3>Flip-flop</h3>
+					<img class="strech" src="media/flip-flop.jpeg" />
+					<aside class="notes" data-markdown>
+1918, invented by two English physicists
+F. W. Jordan and William Henry Eccles
+					</aside>
+				</section>
+
+				<section>
+					<p>Second building block!</p>
+					<p style="font-size: 3em;">🎉</p>
+					<aside class="notes" data-markdown>remember at particular point in time - one data input + clk</aside>
+				</section>
+
+				<section data-background-color="#000"
+					data-background-image="media/et-latch-1.png"
+					data-background-size="contain">
+					<aside class="notes">scary - it's just flip flops</aside>
+				</section>
+				<section data-background-color="#000"
+					data-background-image="media/et-latch-1-highlighted-flip-flops.png"
+					data-background-size="contain">
+				</section>
+				<section data-background-color="#000"
+					data-background-image="media/et-latch-1.png"
+					data-background-size="contain">
+				</section>
+				<section data-background-color="#000"
+					data-background-image="media/et-latch-2.png"
+					data-background-size="contain">
+				</section>
+				<section data-background-color="#000"
+					data-background-image="media/et-latch-3.png"
+					data-background-size="contain">
+				</section>
+				<section data-background-color="#000"
+					data-background-image="media/et-latch-4.png"
+					data-background-size="contain">
+				</section>
+				<section data-background-color="#000"
+					data-background-image="media/et-latch-5.png"
+					data-background-size="contain">
+				</section>
+
+				<section data-background-color="#000"
+					data-background-image="media/edge-triggered-latch.png"
+					data-background-size="contain">
+					<h3 style="height: 50vh;">Edge-triggered D type latch</h3>
+					<aside class="notes">terminology changes - latch</aside>
+				</section>
+
+				<section data-background-color="#000"
+					data-background-image="media/et-latch-b-1.png"
+					data-background-size="contain">
+				</section>
+				<section data-background-color="#000"
+					data-background-image="media/et-latch-b-2.png"
+					data-background-size="contain">
+				</section>
+				<section data-background-color="#000"
+					data-background-image="media/et-latch-b-3.png"
+					data-background-size="contain">
+				</section>
+				<section data-background-color="#000"
+					data-background-image="media/et-latch-b-4.png"
+					data-background-size="contain">
+				</section>
+				<section data-background-color="#000"
+					data-background-image="media/et-latch-b-5.png"
+					data-background-size="contain">
+				</section>
+				<section data-background-color="#000"
+					data-background-image="media/et-latch-b-1.png"
+					data-background-size="contain">
+					<aside class="notes">1 bit of memory</aside>
+				</section>
+
+				<section data-background-color="#000"
+					data-background-image="media/1x2-latch-1.png"
+					data-background-size="contain">
+					<aside class="notes">2 bits of memory - count to 4</aside>
+				</section>
+				<section data-background-color="#000"
+					data-background-image="media/1x2-latch-2.png"
+					data-background-size="contain">
+				</section>
+				<section data-background-color="#000"
+					data-background-image="media/1x2-latch-3.png"
+					data-background-size="contain">
+				</section>
+				<section data-background-color="#000"
+					data-background-image="media/1x2-latch-4.png"
+					data-background-size="contain">
+				</section>
+				<section data-background-color="#000"
+					data-background-image="media/1x2-latch-5.png"
+					data-background-size="contain">
+				</section>
+				<section data-background-color="#000"
+					data-background-image="media/1x2-latch-6.png"
+					data-background-size="contain">
+				</section>
+				<section data-background-color="#000"
+					data-background-image="media/1x2-latch-7.png"
+					data-background-size="contain">
+				</section>
+				<section data-background-color="#000"
+					data-background-image="media/1x2-latch-8.png"
+					data-background-size="contain">
+				</section>
+				<section data-background-color="#000"
+					data-background-image="media/1x2-latch-9.png"
+					data-background-size="contain">
+				</section>
+				<section data-background-color="#000"
+					data-background-image="media/1x2-latch-10.png"
+					data-background-size="contain">
+				</section>
+
+				<section data-background-color="#000"
+					data-background-image="media/1x8-latch-0.png"
+					data-background-size="contain">
+				</section>
+				<section data-background-color="#000"
+					data-background-image="media/1x8-latch-1.png"
+					data-background-size="contain">
+				</section>
+				<section data-background-color="#000"
+					data-background-image="media/1x8-latch-2.png"
+					data-background-size="contain">
+				</section>
+				<section data-background-color="#000"
+					data-background-image="media/1x8-latch-3.png"
+					data-background-size="contain">
+				</section>
+
+				<section data-background-color="#000"
+					data-background-image="media/1x2-latch-1.png"
+					data-background-size="contain">
+				</section>
+
+				<section data-background-color="#000"
+					data-background-image="media/2x1-d-0.png"
+					data-background-size="contain">
+					<aside class="notes">1 to 2 decoder</aside>
+				</section>
+				<section data-background-color="#000"
+					data-background-image="media/2x1-d-1.png"
+					data-background-size="contain">
+				</section>
+				<section data-background-color="#000"
+					data-background-image="media/2x1-d-2.png"
+					data-background-size="contain">
+				</section>
+				<section data-background-color="#000"
+					data-background-image="media/2x1-d-3.png"
+					data-background-size="contain">
+				</section>
+				<section data-background-color="#000"
+					data-background-image="media/2x1-d-4.png"
+					data-background-size="contain">
+				</section>
+				<section data-background-color="#000"
+					data-background-image="media/2x1-d-5.png"
+					data-background-size="contain">
+				</section>
+				<section data-background-color="#000"
+					data-background-image="media/2x1-d-6.png"
+					data-background-size="contain">
+				</section>
+				<section data-background-color="#000"
+					data-background-image="media/2x1-d-7.png"
+					data-background-size="contain">
+				</section>
+
+				<section data-background-color="#000"
+					data-background-image="media/2x1-latch-0.png"
+					data-background-size="contain">
+					<aside class="notes">2 to 1 selector</aside>
+				</section>
+				<section data-background-color="#000"
+					data-background-image="media/2x1-latch-1.png"
+					data-background-size="contain">
+				</section>
+				<section data-background-color="#000"
+					data-background-image="media/2x1-latch-2.png"
+					data-background-size="contain">
+				</section>
+				<section data-background-color="#000"
+					data-background-image="media/2x1-latch-3.png"
+					data-background-size="contain">
+				</section>
+				<section data-background-color="#000"
+					data-background-image="media/2x1-latch-4.png"
+					data-background-size="contain">
+				</section>
+				<section data-background-color="#000"
+					data-background-image="media/2x1-latch-5.png"
+					data-background-size="contain">
+				</section>
+
+				<section data-background-color="#fff"
+					data-background-image="media/2x1-ram.png"
+					data-background-size="50%">
+				</section>
+				<section data-background-color="#fff"
+					data-background-image="media/4x1-ram.png"
+					data-background-size="50%">
+				</section>
+				<section data-background-color="#fff"
+					data-background-image="media/8x1-ram.png"
+					data-background-size="50%">
+				</section>
+				<section data-background-color="#fff"
+					data-background-image="media/8x8-ram.png"
+					data-background-size="50%">
+				</section>
+				<section data-background-color="#fff"
+					data-background-image="media/65kx8-ram.png"
+					data-background-size="50%">
+					<aside class="notes">
+65536 ≈ 64 000
+65536 = 2^16; approximately equal; RAM is volatile and random access</aside>
+				</section>
+
+			</section>
+
+			<section>
+				<section>
+					<h2>The plan</h2>
+					<ul>
+						<li>light switch</li>
+						<li>logic gates</li>
+						<li>flip-flops</li>
+						<li><strong>RAM 👈</strong></li>
+					</ul>
+				</section>
+
+				<section>
+					<p>We've build a RAM!</p>
+					<p style="font-size: 3em;">🎉</p>
+				</section>
+
+				<section data-background-color="#fff"
+					data-background-image="media/memory-cpu.png"
+					data-background-size="50%">
+					<aside class="notes" data-markdown>
+We now have a better understanding what RAM is and what we can do with it.
+
+- 16 bit add
+- 8 bit data in/ou
+- write signal
+					</aside>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h2>Recap</h2>
+					<div style="width:50%; margin:0 auto; text-align: left;">
+						<p class="fragment">👉 logic gates</p>
+						<p class="fragment">👉 flip-flops and latches</p>
+						<p class="fragment">👉 RAM</p>
+					</div>
+				</section>
+				<section data-background-color="#fff"
+					data-background-image="media/memory-cpu.png"
+					data-background-size="50%">
+					<h1 class="fragment dark-type">next time!</h1>
+				</section>
+			</section>
+
+			<section>
+				<h3>Questions?</h3>
+			</section>
+
+			<section>
+				<section>
+					<h3>Sources</h3>
+					<ul style="font-size: .7em;">
+						<li>Code: The Hidden Language of Computer Hardware and Software<br /><em>Charles Petzold</em></li>
+						<li>https://www.falstad.com/circuit/</li>
+						<li>But How Do It Know? The Basic Principles of Computers for Everyone<br /><em>J. Clark Scott</em></li>
+						<li>https://slideplayer.com/slide/14604328/</li>
+						<li>https://www.geeksforgeeks.org/computer-organization-von-neumann-architecture/</li>
+						<li>http://www.vias.org/albert_ecomm/aec09_telegraph_systems_004.html</li>
+						<li>https://hackaday.com/2018/06/04/a-100th-birthday-celebration-for-the-flip-flop/</li>
+						<li>https://www.autodesk.com/products/eagle/blog/series-vs-parallel-circuits/</li>
+					</ul>
+				</section>
+
+				<section
+					data-background-color="#000"
+					data-background-video="media/armgl-simulation.mp4"
+					data-background-video-loop
+					data-background-video-muted="true"
+					data-background-size="contain">
+				</section>
+
+				<section>
+					<img class="stretch" src="media/visual-mos-1.png" />
+					<a href="http://visual6502.org">visual6502.org</a>
+				</section>
+
+				<section>
+					<img class="stretch" src="media/visual-mos-2.png" />
+					<a href="http://visual6502.org">visual6502.org</a>
+				</section>
+
+			</section>
+		</div>
+	</div>
+	<script src="js/reveal.js"></script>
+	<script>
+		Reveal.initialize({
+			dependencies: [
+				// Interpret Markdown in <section> elements
+				{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+				{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+
+				// Syntax highlight for <code> elements
+				{ src: 'plugin/highlight/highlight.js', async: true },
+
+				// Zoom in and out with Alt+click
+				{ src: 'plugin/zoom-js/zoom.js', async: true },
+
+				// Speaker notes
+				{ src: 'plugin/notes/notes.js', async: true },
+			]
+		});
+		Reveal.configure({
+			controls: false,
+			hash: true,
+			progress: false,
+			transition: 'none',
+			navigationMode: 'linear',
+			// slideNumber: 'c/t',
+			backgroundTransition: 'none',
+		});
+
+	</script>
+
+	<style>
+		.reveal section img { border-width: 0; box-shadow: none; }
+		.reveal li { padding-top: 5px; padding-bottom: 5px; }
+		.reveal h1, .reveal h2, .reveal h3, .reveal h4, .reveal h5, .reveal h6 { text-transform: none; }
+		.reveal table.centered th, .reveal table.centered td { text-align: center; }
+		.highlighted { background-color: rgba(255, 255, 100, .5); }
+		.dark-type { color:#000 !important; }
+	</style>
+</body>
+</html>
